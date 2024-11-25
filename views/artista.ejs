@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= artista.nome %></title>
+    <link rel="stylesheet" href="/artista.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gugi&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="/images\logo-favico.png" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="/"><img src="/images/logo.png" alt="BraunBeat Logo"></a>
+        </div>
+        <nav>
+            <a href="/artistas"><i class="fa-solid fa-user"></i> Artistas</a>
+            <a href="/discos"><i class="fas fa-record-vinyl"></i> Discos</a>
+            <a href="/faixas"><i class="fas fa-music"></i> Faixas</a>
+            <a href="/generos"><i class="fas fa-tags"></i> Generos</a>
+        </nav>
+    </header>
+
+    <div class="artista-container">
+        <div class="foto">
+            <img src="/<%= artista.foto %>" alt="Foto de <%= artista.nome %>">
+        </div>
+        <div class="dados">
+            <h2><%= artista.nome %></h2>
+            <p><strong>Nacionalidade:</strong> <%= artista.nacionalidade %></p>
+            <p><strong>Gêneros Musicais:</strong> 
+                <% if (artista.generos && artista.generos.length > 0) { %>
+                    <%= artista.generos.map(genero => genero.nome).join(', ') %>
+                <% } else { %>
+                    Nenhum gênero associado
+                <% } %>
+            </p>
+        </div>
+    </div>
+
+    <div class="discos-container">
+        <h3>Discos do Artista</h3>
+        <div class="discos-list">
+            <% artista.discos.forEach(function(disco) { %>
+                <div class="disco-item">
+                    <button class="disco-name" onclick="window.location.href='/discos/<%= disco.id %>'">
+                        <%= disco.titulo %>
+                    </button>
+                </div>
+            <% }) %>
+        </div>
+    </div>
+</body>
+</html>

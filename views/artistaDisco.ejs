@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catalogo Musical</title>
+    <link rel="stylesheet" href="/artistaDisco.css                                                                                                                                                                                                                                                                     ">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gugi&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="/images\logo-favico.png" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/artistas"><i class="fa-solid fa-user"></i> Artistas</a>
+            <a href="/discos"><i class="fas fa-record-vinyl"></i> Discos</a>
+            <a href="/faixas"><i class="fas fa-music"></i> Faixas</a>
+            <a href="/generos"><i class="fas fa-tags"></i> Generos</a>
+        </nav>
+    </header>
+
+    <h1 class="vincular-title">Vincular Artista ao Disco: <%= disco.titulo %></h1>
+<div class="vincular-container">
+    <form action="/vincular-artista/<%= disco.id %>" method="POST" class="vincular-form">
+        <label for="artistaId">Escolha um artista</label>
+        <select name="artistaId" id="artistaId" class="vincular-select">
+            <% artistas.forEach(artista => { %>
+                <option value="<%= artista.id %>"><%= artista.nome %></option>
+            <% }) %>            
+        </select>
+
+        <button type="submit" class="vincular-button">Vincular Artista</button>
+    </form>        
+</div>
+
+</body>
+</html>

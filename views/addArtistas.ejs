@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar Artista</title>
+    <link rel="stylesheet" href="/addartista.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gugi&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="/images\logo-favico.png" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/artistas"><i class="fa-solid fa-user"></i> Artistas</a>
+            <a href="/discos"><i class="fas fa-record-vinyl"></i> Discos</a>
+            <a href="/faixas"><i class="fas fa-music"></i> Faixas</a>
+            <a href="/generos"><i class="fas fa-tags"></i> Generos</a>
+        </nav>
+    </header>
+
+    <div class="form-container">
+        <h2>Adicionar Artista</h2>
+        <form action="/artistas/add" method="POST" enctype="multipart/form-data">
+            <label for="nome">Nome do Artista</label>
+            <input type="text" id="nome" name="nome" required>
+
+            <label for="nacionalidade">Nacionalidade</label>
+            <input type="text" id="nacionalidade" name="nacionalidade" required>
+
+            <p>Gêneros:</p>
+            <div class="generos-checkbox">
+                <% generos.forEach((genero) => { %>
+                    <input type="checkbox" id="genero_<%= genero.id %>" name="generos[]" value="<%= genero.id %>">
+                    <label for="genero_<%= genero.id %>"><%= genero.nome %></label>
+                <% }); %>
+            </div>
+            <a href="/generos/add">Adicionar Gênero</a>
+
+            <label for="foto">Foto do Artista</label>
+            <input type="file" id="foto" name="foto" accept="image/*" required>
+
+            <button type="submit" class="submit-btn">Adicionar Artista</button>
+        </form>
+    </div>
+</body>
+</html>

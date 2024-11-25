@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artistas</title>
+    <link rel="stylesheet" href="/artistas.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gugi&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="images\logo-favico.png" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="/"><img src="/images/logo.png" alt="BraunBeat Logo"></a>
+        </div>
+        <nav>
+            <a href="/artistas"><i class="fa-solid fa-user"></i> Artistas</a>
+            <a href="/discos"><i class="fas fa-record-vinyl"></i> Discos</a>
+            <a href="/faixas"><i class="fas fa-music"></i> Faixas</a>
+            <a href="/generos"><i class="fas fa-tags"></i> Generos</a>
+        </nav>
+    </header>
+
+    <div class="artists-container">
+        <a href="/artistas/add" class="add-artist-button"><i class="fas fa-plus-circle"></i> Adicionar Artista</a>
+            
+        <div class="artists-list">
+            <% artistas.forEach(function(artista) { %>
+                <div class="artist-item">
+                    <button class="artist-name" onclick="window.location.href='/artistas/<%= artista.id %>'">
+                        <%= artista.nome %>
+                    </button>
+                    <div class="artist-options">
+                        <button class="edit-artist" onclick="window.location.href='/artistas/<%= artista.id %>/edit'">
+                            <i class="fas fa-edit"></i> Editar
+                        </button>
+
+                        <form action="/artistas/<%= artista.id %>" method="POST" onsubmit="return confirm('Você tem certeza que deseja excluir este artista?');">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <button type="submit" class="delete-artist">
+                                <i class="fas fa-trash"></i> Excluir
+                            </button>
+                        </form>  
+
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    </div>
+</body>
+</html>

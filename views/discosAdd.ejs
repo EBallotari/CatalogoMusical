@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar Disco</title>
+    <link rel="stylesheet" href="/addDisco.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gugi&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="/images\logo-favico.png" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/artistas"><i class="fa-solid fa-user"></i> Artistas</a>
+            <a href="/discos"><i class="fas fa-record-vinyl"></i> Discos</a>
+            <a href="/faixas"><i class="fas fa-music"></i> Faixas</a>
+            <a href="/generos"><i class="fas fa-tags"></i> Generos</a>
+        </nav>
+    </header>
+
+    <form action="/discos/add" method="POST" enctype="multipart/form-data">
+      <label for="titulo">Título do Disco</label>
+      <input type="text" id="titulo" name="titulo" required>
+    
+      <label for="ano_lancamento">Ano de Lançamento</label>
+      <input type="number" id="ano_lancamento" name="ano_lancamento" placeholder="Ex: 2024" required>
+    
+      <label for="capa">Capa do Disco</label>
+      <input type="file" id="capa" name="capa" accept="image/*" required>
+    
+      <label for="faixas">Faixas</label>
+      <div id="faixas">
+        <div class="faixa">
+          <input type="text" name="faixas[]" placeholder="Título da Faixa" required>
+    
+          <div class="generos-select">
+            <select name="faixaGeneros[]" id="genero">
+              <option value="">Escolha um gênero</option>
+              <% generos.forEach((genero) => { %>
+                <option value="<%= genero.id %>"><%= genero.nome %></option>
+              <% }) %>
+            </select>
+          </div>
+        </div>
+      </div>
+    
+      <button type="button" onclick="addFaixa()">Adicionar Faixa</button>
+      <button type="submit">Adicionar Disco</button>
+    </form>
+    
+    <script>
+      function addFaixa() {
+        const faixasContainer = document.getElementById('faixas');
+        const newFaixa = document.createElement('div');
+        newFaixa.classList.add('faixa');
+    
+        newFaixa.innerHTML = `
+          <input type="text" name="faixas[]" placeholder="Título da Faixa" required>
+    
+          <!-- Seleção de gêneros para cada nova faixa -->
+          <div class="generos-select">
+            <select name="faixaGeneros[]" id="genero">
+              <option value="">Escolha um gênero</option>
+              <% generos.forEach((genero) => { %>
+                <option value="<%= genero.id %>"><%= genero.nome %></option>
+              <% }) %>
+            </select>
+          </div>
+        `;
+    
+        faixasContainer.appendChild(newFaixa); 
+      }
+    </script>    
+</body>
+</html>

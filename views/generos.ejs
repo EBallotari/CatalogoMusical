@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gêneros</title>
+    <link rel="stylesheet" href="/genero.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gugi&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="images/logo-favico.png" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/artistas"><i class="fa-solid fa-user"></i> Artistas</a>
+            <a href="/discos"><i class="fas fa-record-vinyl"></i> Discos</a>
+            <a href="/faixas"><i class="fas fa-music"></i> Faixas</a>
+            <a href="/generos"><i class="fas fa-tags"></i> Gêneros</a>
+        </nav>
+    </header>
+
+    <div class="genres-container">
+        <a href="/generos/add" class="add-genre-button"><i class="fas fa-plus-circle"></i> Adicionar Gênero</a>
+
+        <div class="genres-list">
+            <% generos.forEach(function(genero) { %>
+                <div class="genre-item">
+                    <button class="genre-name">
+                        <%= genero.nome %>
+                    </button>
+                    <div class="genre-options">
+                        <button class="edit-genre" onclick="window.location.href='/generos/<%= genero.id %>/edit'">
+                            <i class="fas fa-edit"></i> Editar
+                        </button>
+
+                        <form action="/generos/<%= genero.id %>" method="POST" onsubmit="return confirm('Você tem certeza que deseja excluir este genero?');">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <button type="submit" class="delete-genre">
+                                <i class="fas fa-trash"></i> Excluir
+                            </button>
+                        </form>
+
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    </div>
+
+</body>
+</html>

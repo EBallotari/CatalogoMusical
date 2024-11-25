@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faixas</title>
+    <link rel="stylesheet" href="/faixas.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gugi&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="images\logo-favico.png" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/artistas"><i class="fa-solid fa-user"></i> Artistas</a>
+            <a href="/discos"><i class="fas fa-record-vinyl"></i> Discos</a>
+            <a href="/faixas"><i class="fas fa-music"></i> Faixas</a>
+            <a href="/generos"><i class="fas fa-tags"></i> Generos</a>
+        </nav>
+    </header>
+
+    <div class="faixas-container">
+        <% if (faixas && faixas.length > 0) { %>
+          <% faixas.forEach(function(faixa) { %>
+            <div class="faixa-item">
+              <h3 class="faixa-titulo"><%= faixa.titulo %></h3>
+      
+              <% if (faixa.Generos && faixa.Generos.length > 0) { %>
+                <% faixa.Generos.forEach(function(genero) { %>
+                  <p><%= genero.nome %></p> 
+                <% }) %>
+              <% } else { %>
+                <p>Nenhum gênero associado</p>
+              <% } %>
+      
+              <% if (faixa.Disco) { %>
+                <button class="disco-button linked-disco" onclick="window.location.href='/discos/<%= faixa.Disco.id %>'">
+                  Disco: <%= faixa.Disco.titulo %> 
+                </button>
+              <% } else { %>
+                <button class="disco-button link-disco" onclick="window.location.href='/vincular-disco/<%= faixa.id %>'">
+                  Vincular disco
+                </button>
+              <% } %>
+      
+              <div class="faixa-options">
+                
+                <button class="edit-faixa" onclick="window.location.href='faixas/<%= faixa.id %>/edit'">
+                  <i class="fas fa-edit"></i> Editar
+                </button>
+        
+                <form action="/faixas/<%= faixa.id %>" method="POST" onsubmit="return confirm('Você tem certeza que deseja excluir esta faixa?');">
+                  <input type="hidden" name="_method" value="DELETE">
+                  <button type="submit" class="delete-faixa">
+                      <i class="fas fa-trash"></i> Excluir
+                  </button>
+                </form>
+
+              </div>
+            </div>
+          <% }) %>
+        <% } else { %>
+          <p>Nenhuma faixa encontrada</p>
+        <% } %>
+      </div>         
+</body>
+</html>
