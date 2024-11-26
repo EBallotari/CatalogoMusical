@@ -6,29 +6,33 @@
     <title>Adicionar Gênero</title>
     <link rel="stylesheet" href="/addGenero.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Gugi&display=swap" rel="stylesheet">
-    <link rel="shortcut icon" href="/images\logo-favico.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="/images/logo-favico.png" type="image/x-icon">
 </head>
 <body>
     <header>
         <nav>
-            <a href="/artistas"><i class="fa-solid fa-user"></i> Artistas</a>
-            <a href="/discos"><i class="fas fa-record-vinyl"></i> Discos</a>
-            <a href="/faixas"><i class="fas fa-music"></i> Faixas</a>
-            <a href="/generos"><i class="fas fa-tags"></i> Generos</a>
+            <a href="/">Início</a>
+            <a href="/artistas">Artistas</a>
+            <a href="/discos">Discos</a>
+            <a href="/faixas">Faixas</a>
+            <a href="/generos">Gêneros</a>
         </nav>
     </header>
 
-    <div class="form-container">
-        <form action="/generos/add" method="POST">
 
-            <label for="nome">Nome do Genero:</label>
-            <input type="text" id="nome" name="nome" placeholder="Digite o nome do gênero" required>
-    
-            <button type="submit">Adicionar Gênero</button>
+    <main class="form-container">
+        <h1>Adicionar Novo Gênero</h1>
+        <form action="/generos/add" method="POST">
+            <div class="form-group">
+                <label for="nome">Nome do Gênero</label>
+                <input type="text" id="nome" name="nome" placeholder="Ex.: Rock" required>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn-submit">Adicionar Gênero</button>
+            </div>
         </form>
-    </div>
+    </main>
 </body>
 </html>

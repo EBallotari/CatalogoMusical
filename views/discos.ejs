@@ -6,55 +6,41 @@
     <title>Discos</title>
     <link rel="stylesheet" href="/discos.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Gugi&display=swap" rel="stylesheet">
-    <link rel="shortcut icon" href="images\logo-favico.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
         <nav>
-            <a href="/artistas"><i class="fa-solid fa-user"></i> Artistas</a>
-            <a href="/discos"><i class="fas fa-record-vinyl"></i> Discos</a>
-            <a href="/faixas"><i class="fas fa-music"></i> Faixas</a>
-            <a href="/generos"><i class="fas fa-tags"></i> Generos</a>
+            <a href="/">Início</a>
+            <a href="/artistas">Artistas</a>
+            <a href="/discos">Discos</a>
+            <a href="/faixas">Faixas</a>
+            <a href="/generos">Gêneros</a>
         </nav>
     </header>
 
-    <div class="discos-container">
-        <a href="/discos/add" class="add-disco-button"><i class="fas fa-plus-circle"></i> Adicionar Disco</a>
-        
-        <div class="discos-list">
-            <% discos.forEach(function(disco) { %>
-                <div class="disco-item">
-                    <button class="disco-name" onclick="window.location.href='/discos/<%= disco.id %>'">
-                        <%= disco.titulo %>
-                    </button>
-                    <div class="disco-options">
-                        <% if (disco.artista && disco.artista.nome) { %>
-                            <button class="artist-button linked-artist" onclick="window.location.href='/artistas/<%= disco.artista.id %>'">
-                                <%= disco.artista.nome %>
-                            </button>
-                        <% } else { %>
-                            <button class="artist-button link-artist" onclick="window.location.href='/vincular-artista/<%= disco.id %>'">
-                                Vincular artista
-                            </button>
-                        <% } %>
-                        <button class="edit-disco" onclick="window.location.href='discos/<%= disco.id %>/edit'">
-                            <i class="fas fa-edit"></i> Editar
-                        </button>
 
-                        <form action="/discos/<%= disco.id %>" method="POST" onsubmit="return confirm('Você tem certeza que deseja excluir este disco? Todas as faixas serão apagadas!');">
-                            <input type="hidden" name="_method" value="DELETE">
-                            <button type="submit" class="delete-disco">
-                                <i class="fas fa-trash"></i> Excluir
-                            </button>
-                        </form>                        
-
+    <main class="main-content">
+        <div class="container">
+            <a href="/discos/add" class="btn btn-add"><i class="fas fa-plus-circle"></i> Adicionar Disco</a>
+            
+            <div class="disco-grid">
+                <% discos.forEach(function(disco) { %>
+                    <div class="disco-card">
+                        <div class="disco-info">
+                            <h3 class="disco-title"><%= disco.titulo %></h3>
+                            <p><%= disco.artista %></p>
+                            <p><%= disco.ano_lancamento %></p>
+                            <button onclick="window.location.href='/discos/<%= disco.id %>'" class="btn btn-view">Ver</button>
+                            <form action="/discos/<%= disco.id %>" method="POST" onsubmit="return confirm('Você tem certeza que deseja excluir este disco?');">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <button type="submit" class="btn btn-delete">Excluir</button>
+                            </form>
+                        </div>
                     </div>
-                </div>
-            <% }) %>
+                <% }) %>
+            </div>
         </div>
-    </div>         
+    </main>
 </body>
 </html>

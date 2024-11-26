@@ -29,7 +29,7 @@ const upload = multer({
       return cb(null, true);  
     } else {
 
-      cb(new Error('Formato de arquivo inválido. Apenas imagens JPEG, PNG ou GIF são permitidas.'));
+      cb(new Error('Formato de arquivo inválido. '));
     }
   }
 });

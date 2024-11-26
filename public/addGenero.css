@@ -1,102 +1,100 @@
-* {
+body, h1, h2, h3, p, ul, li, a, button, form, input, label {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
 body {
-    font-family: 'Gugi', sans-serif;
-    background-color: #000000; 
-    color: #ffffff; 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    min-height: 100vh;
-    justify-content: space-between;
+    font-family: 'Rubik', sans-serif;
+    font-size: 16px;
+    color: #333;
+    background-color: #f9f9f9;
+    line-height: 1.6;
+    text-align: center; 
 }
 
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    max-width: 1200px;
-    padding: 15px 30px;
-    background-color: #1c1c1c; 
-    border-bottom: 2px solid #FF4057;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+    background-color: #333;
+    padding: 10px 0;
+    margin-bottom: 20px;
 }
 
-
-.logo img {
-    height: 50px; 
-    width: auto; 
+header nav {
+    display: inline-block; 
 }
 
-nav {
-    display: flex;
-    gap: 20px;
-}
-
-nav a {
-    color: #ffffff; 
+header nav a {
+    color: #fff;
     text-decoration: none;
-    font-size: 1em;
-    font-weight: 500;
-    padding: 10px 15px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin: 0 10px;
+    font-weight: 700;
+    transition: color 0.3s;
 }
 
-nav a:hover {
-    background-color: #FF4057; 
-    color: #ffffff; 
-    transform: scale(1.1); 
+header nav a:hover {
+    color: #ff9800;
 }
 
-.form-container {
-    max-width: 500px;
-    margin: 0 auto;
+form {
+    display: inline-block;
+    width: 100%;
+    max-width: 400px; 
+    text-align: left;
+    background-color: #fff;
     padding: 20px;
-    background-color: #1c1c1c;
-    border: 1px solid #FF4057;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
 }
 
-.form-container form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
 }
 
-.form-container label {
-    font-weight: bold;
-    color: #ffffff;
+.form-group {
+    margin-bottom: 20px;
 }
 
-.form-container input[type="text"] {
+label {
+    font-size: 14px;
+    font-weight: 500;
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+}
+
+input[type="text"] {
+    width: 100%;
     padding: 10px;
-    border: 1px solid #ced4da;
+    font-size: 14px;
+    border: 1px solid #ccc;
     border-radius: 4px;
-    font-size: 16px;
+    transition: border-color 0.3s;
 }
 
-.form-container button {
-    padding: 10px 15px;
-    background-color: #FF4057;
+input[type="text"]:focus {
+    border-color: #4caf50;
+    outline: none;
+}
+
+.form-actions {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.btn-submit {
+    background-color: #4caf50;
     color: white;
-    font-size: 16px;
-    font-weight: bold;
+    padding: 10px 15px;
     border: none;
-    border-radius: 4px;
+    border-radius: 5px;
+    font-size: 14px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s;
 }
 
-.form-container button:hover {
-    background-color: #d0334d;
+.btn-submit:hover {
+    background-color: #45a049;
 }

@@ -1,57 +1,86 @@
-* {
+body, h1, p, a {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
 body {
-    font-family: 'Gugi', sans-serif;
-    background-color: #000000; 
-    color: #ffffff; 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    min-height: 100vh;
-    justify-content: space-between;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+    margin: 0;
 }
 
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    max-width: 1200px;
-    padding: 15px 30px;
-    background-color: #1c1c1c; 
-    border-bottom: 2px solid #FF4057;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
 }
 
-.logo img {
-    height: 50px; 
-    width: auto; 
-}
-
-nav {
+header nav {
     display: flex;
+    justify-content: center;
     gap: 20px;
 }
 
-nav a {
-    color: #ffffff; 
+header nav a {
+    color: #fff;
     text-decoration: none;
-    font-size: 1em;
-    font-weight: 500;
-    padding: 10px 15px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+header nav a:hover {
+    color: #ffcc00;
+}
+
+.main-content {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.hero-section h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.hero-section p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: #666;
+}
+
+.btn {
+    display: inline-block;
+    text-decoration: none;
+    padding: 10px 20px;
     border-radius: 5px;
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-nav a:hover {
-    background-color: #FF4057; 
-    color: #ffffff; 
-    transform: scale(1.1); 
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+    font-weight: bold;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    transform: translateY(-3px);
+}
+
+@media (max-width: 768px) {
+    header nav {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .hero-section h1 {
+        font-size: 2rem;
+    }
+
+    .hero-section p {
+        font-size: 1rem;
+    }
 }
